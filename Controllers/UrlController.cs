@@ -10,7 +10,7 @@ using Twaso.Resources;
 
 namespace Twaso.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("")]
     [ApiController]
     public class UrlController : ControllerBase
     {
