@@ -33,9 +33,9 @@ namespace Twaso
         {
             services.AddCors();
             services.AddControllers();
-            services.AddDbContext<AppDbContext>(options =>
+            services.AddDbContextPool<AppDbContext>(options =>
             {
-                options.UseInMemoryDatabase("twaso-api");
+                options.UseSqlServer(Configuration.GetConnectionString("UrlConnection"));
             });
             services.AddScoped<IUrlRepository, UrlRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -52,13 +52,9 @@ namespace Twaso
             }
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

@@ -20,7 +20,7 @@ namespace Twaso.Persistence.Contexts
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Url>().ToTable("Urls");
+            modelBuilder.Entity<Url>().ToTable("Url");
             modelBuilder.Entity<Url>().HasKey(p => p.Hash);
             modelBuilder.Entity<Url>().Property(p => p.Hash).IsRequired();
             modelBuilder.Entity<Url>().Property(p => p.OriginalUrl).IsRequired();
